@@ -24,10 +24,13 @@ def draw_bar_graph(csvfile):
     # Calculate number of unique countries
     num_countries = len(data['Country'].unique())
 
+    lighter_gold = (250/255, 210/255, 50/255)
+
     # Create a custom color gradient from "magenta" to a transparent version of the color
-    start_color = 'dimgrey'
+    #start_color = 'palegoldenrod'
+    start_color = lighter_gold
     #colors = [mcolors.to_rgba(start_color, alpha=i/(num_countries-1)) for i in range(num_countries)]
-    min_alpha = 0.3  # Set the minimum alpha value
+    min_alpha = 0.5  # Set the minimum alpha value
     colors = [mcolors.to_rgba(start_color, alpha=min_alpha + (1-min_alpha)*i/(num_countries-1)) for i in range(num_countries)]
     colors = list(reversed(colors))
 
