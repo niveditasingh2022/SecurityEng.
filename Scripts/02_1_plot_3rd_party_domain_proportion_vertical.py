@@ -71,8 +71,12 @@ for csv_file in csv_files:
     plt.yticks(fontsize=12)
     plt.grid(False)
 
-    for i, v in enumerate(top_domains.values):
+    #for i, v in enumerate(top_domains.values):
+    #    plt.text(i, v, str(round(v*100, 2)) + '%', va='bottom', ha='center', color='black', fontsize=12)
+    for i, (domain, v) in enumerate(top_domains.items()):
+        cookie_count = domain_counts[domain]
         plt.text(i, v, str(round(v*100, 2)) + '%', va='bottom', ha='center', color='black', fontsize=12)
+        plt.text(i, v - 0.002, '(' + str(cookie_count)+')', va='bottom', ha='center', color='black', fontsize=10)  # Adjusted position for the cookie count text
 
     # Show the plot
     #plt.show()
@@ -81,5 +85,5 @@ for csv_file in csv_files:
 
     plt.tight_layout()
     # Save the figure
-    plt.savefig(csv_file.split('.')[0] + '_domain_proportion_vertical_graph.png')
+    plt.savefig(file_name_without_suffix + '_domain_proportion_vertical_graph.png')
     plt.close()
