@@ -39,9 +39,11 @@ def plot_horizontal_grouped_bar_graph_absolute_values(data, title):
     plt.title(title, fontweight='bold', fontsize=16)
     plt.legend(loc='lower right')
     plt.gca().invert_yaxis()
+    plt.grid(axis='x')
+    plt.gca().set_axisbelow(True)
     plt.tight_layout()
-    output_file = f"{title}_abs.png"
-    plt.savefig(output_file)
+    output_file = f"{title}_abs.pdf"
+    plt.savefig(output_file, format='pdf')
     plt.show()
     plt.close()
 
@@ -63,9 +65,11 @@ def plot_horizontal_stacked_bar_graph_absolute_values(data, title):
     plt.title(title, fontweight='bold')
     plt.legend(loc='lower right')
     plt.gca().invert_yaxis()
+    plt.grid(axis='x')
+    plt.gca().set_axisbelow(True)
     plt.tight_layout()
-    output_file = f"{title}_abs.png"
-    plt.savefig(output_file)
+    output_file = f"{title}_abs.pdf"
+    plt.savefig(output_file, format='pdf')
     plt.show()
     plt.close()
 

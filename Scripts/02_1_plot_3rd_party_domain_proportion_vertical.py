@@ -52,22 +52,22 @@ for csv_file in csv_files:
     #fig,ax = plt.subplots(figsize=(12, 8))
     bar_plot = top_domains.sort_values(ascending=False).plot(kind='bar', color=refined_color_palette)
     if leaf_file_name == "All Countries":
-        plt.title('Top 20 third party cookies in all countries', fontsize=18, fontweight='bold')
+        plt.title(f'Top {len(top_domains)} third party cookies in all countries', fontsize=18, fontweight='bold')
         plt.ylim(0, 0.06) # Set y-axis limit to 6%
     elif leaf_file_name == "Less Stricter":
-        plt.title('Top 20 third party cookies in less stricter countries', fontsize=18, fontweight='bold')
+        plt.title(f'Top {len(top_domains)} third party cookies in less stricter countries', fontsize=18, fontweight='bold')
         plt.ylim(0, 0.06) # Set y-axis limit to 6%
     elif leaf_file_name == "Stricter Rule":
-        plt.title('Top 20 third party cookies in stricter countries', fontsize=18, fontweight='bold')
+        plt.title(f'Top {len(top_domains)} third party cookies in stricter countries', fontsize=18, fontweight='bold')
         plt.ylim(0, 0.06) # Set y-axis limit to 6%
     else:
-        plt.title('Top 20 third party cookies in ' + leaf_file_name, fontsize=18, fontweight='bold')
+        plt.title(f'Top {len(top_domains)} third party cookies in ' + leaf_file_name, fontsize=18, fontweight='bold')
         #plt.ylim(0, 0.50) # Set y-axis limit to 50%
 
     plt.xlabel('Third parties', fontsize=16)
     plt.xticks(rotation=45, ha='right', fontsize=12)  # Rotate x-labels by 45 degrees
     plt.subplots_adjust(bottom=0.3)  # Adjust the space at the bottom
-    plt.ylabel('Proportion', fontsize=16)
+    plt.ylabel('Proportion\n (Number of cookies)', fontsize=16)
     plt.yticks(fontsize=12)
     plt.grid(False)
 
@@ -79,11 +79,14 @@ for csv_file in csv_files:
         plt.text(i, v - 0.002, '(' + str(cookie_count)+')', va='bottom', ha='center', color='black', fontsize=10)  # Adjusted position for the cookie count text
 
     # Show the plot
-    #plt.show()
+    # plt.show()
 
     plt.gca().yaxis.set_major_formatter(PercentFormatter(1)) # Convert y-axis values to percentage
 
+    #plt.grid(True)
+    plt.grid(axis='y')
+    plt.gca().set_axisbelow(True)
     plt.tight_layout()
     # Save the figure
-    plt.savefig(file_name_without_suffix + '_domain_proportion_vertical_graph.png')
+    plt.savefig(file_name_without_suffix + '_domain_proportion_vertical_graph.pdf', format='pdf')
     plt.close()

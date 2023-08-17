@@ -12,7 +12,7 @@ if args.dir:
 else:
     directory = input("Please enter the directory path for scanning CSV files: ")
 
-output_data = [['File', 'Total Cookies', 'Strict', 'Lax', 'None', 'Not set']]
+output_data = [['File', 'Total Cookies', 'Strict', 'Lax', 'None', 'Not set', 'Not set w/ non-secure', 'Not set w/ secure']]
 
 for filename in os.listdir(directory):
     if filename.endswith("_3rd_party.csv"):
@@ -25,8 +25,10 @@ for filename in os.listdir(directory):
         lax = sum(df['sameSite'] == 'Lax')
         none = sum(df['sameSite'] == 'None')
         missing = sum(df['sameSite'] == '')
+        notset_nonsecure = sum((df['sameSite'] == '') & (df['secure'] == False))
+        notset_secure = sum((df['sameSite'] == '') & (df['secure'] == True))
 
-        output_data.append([filename.replace('_3rd_party.csv', ''), total_cookies, strict, lax, none, missing])
+        output_data.append([filename.replace('_3rd_party.csv', ''), total_cookies, strict, lax, none, missing, notset_nonsecure, notset_secure])
 
 with open('samesite_attribute.csv', 'w', newline='') as file:
     writer = csv.writer(file)

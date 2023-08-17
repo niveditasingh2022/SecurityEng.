@@ -72,7 +72,7 @@ for rule_strictness, color, dark_color in zip(['Less Stricter', 'Stricter Rule']
         percentage_remaining = 100 - percentage_3rd_party
         #ax.annotate(f'{percentage_3rd_party:.2f}%', xy=(bar2.get_x() + bar2.get_width() / 2, height2 / 2), ha='center', va='center', fontsize=9, color='black')
         #ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, (height1 + height2) / 2), ha='center', va='center', fontsize=9, color='white')
-        ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, height1 - 20), ha='center', va='center', fontsize=9, color='black')
+        #ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, height1 - 20), ha='center', va='center', fontsize=9, color='black')
         percentage = (height2 / height1) * 100
         ax.annotate(f'{percentage:.2f}%', xy=(bar2.get_x() + bar2.get_width() / 2, height2), xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=9, color='black')
 
@@ -86,7 +86,10 @@ plt.legend(loc='upper right', prop={'size': 9})
 #plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add a grid
 
 # Display the plot
+plt.grid(axis='y')
+plt.gca().set_axisbelow(True)
 plt.tight_layout()
 
-plt.savefig('num_of_cookies_according_to_countries.png')
+#plt.savefig('num_of_cookies_according_to_countries.png')
+plt.savefig('num_of_cookies_according_to_countries.pdf', format='pdf')
 plt.show()

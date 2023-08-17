@@ -85,6 +85,6 @@ for i, row in data.iterrows():
 
     # Save the graph
     plt.tight_layout()
-    output_file = f"{file}_samesite_attribute_pie_chart.png"
-    plt.savefig(output_file)
+    output_file = f"{file}_samesite_attribute_pie_chart.pdf"
+    plt.savefig(output_file, format='pdf')
     plt.close()

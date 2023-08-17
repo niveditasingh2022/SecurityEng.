@@ -61,8 +61,9 @@ def draw_bar_graph(csvfile):
 
     ax1.invert_yaxis()
     plt.subplots_adjust(left=0.15, right=0.85)  # Adjust the padding for x-axis labels
+    plt.gca().set_axisbelow(True)
     plt.tight_layout()
-    plt.savefig('avg_lifetime_for_top_shopping_web_in_each_country.png')
+    plt.savefig('avg_lifetime_for_top_shopping_web_in_each_country.pdf', format='pdf')
     plt.show()
 
 if __name__ == "__main__":

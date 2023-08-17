@@ -39,9 +39,11 @@ def plot_horizontal_grouped_bar_graph_absolute_values(data, title):
     plt.title(title, fontweight='bold', fontsize=16)
     plt.legend(loc='lower right')
     plt.gca().invert_yaxis()
+    plt.grid(axis='x')
+    plt.gca().set_axisbelow(True)
     plt.tight_layout()
-    output_file = f"{title}_prop.png"
-    plt.savefig(output_file)
+    output_file = f"{title}_prop.pdf"
+    plt.savefig(output_file, format='pdf')
     plt.show()
     plt.close()
 
@@ -72,9 +74,11 @@ def plot_horizontal_stacked_bar_graph_absolute_values(data, title):
     plt.title(title, fontweight='bold')
     plt.legend(loc='lower right')
     plt.gca().invert_yaxis()
+    plt.grid(axis='x')
+    plt.gca().set_axisbelow(True)
     plt.tight_layout()
-    output_file = f"{title}_prop.png"
-    plt.savefig(output_file)
+    output_file = f"{title}_prop.pdf"
+    plt.savefig(output_file,format='pdf')
     plt.show()
     plt.close()
 
@@ -99,5 +103,5 @@ data['File'] = data['File'].replace('Stricter Rule', 'Stricter Rule Countries')
 specified_files_data = data[data['File'].isin(["All Countries", "Less Stricter Countries", "Stricter Rule Countries"])]
 other_files_data = data[~data['File'].isin(["All Countries", "Less Stricter Countries", "Stricter Rule Countries"])]
 #plot_horizontal_stacked_bar_graph_absolute_values(specified_files_data, "The Proportion of 'SameSite' Cookie Attributes by Rules Strictness")
-plot_horizontal_grouped_bar_graph_absolute_values(specified_files_data, "The Proportion of 'SameSite' Cookie Attributes by Rules Strictness")
+plot_horizontal_stacked_bar_graph_absolute_values(specified_files_data, "The Proportion of 'SameSite' Cookie Attributes by Rules Strictness")
 plot_horizontal_stacked_bar_graph_absolute_values(other_files_data, "The Proportion of 'SameSite' Cookie Attributes Across Different Countries")

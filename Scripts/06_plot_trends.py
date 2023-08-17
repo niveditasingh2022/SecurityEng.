@@ -65,9 +65,11 @@ def plot_graphs(directory):
         plt.xticks(x, x_ticks, fontsize=12)
         plt.yticks(fontsize=12)
         plt.legend()
-        plt.tight_layout()
 
-        plt.savefig(f'{new_file_name}_attr_trends.png')
+        plt.grid(axis='y')
+        plt.gca().set_axisbelow(True)
+        plt.tight_layout()
+        plt.savefig(f'{new_file_name}_attr_trends.pdf', format='pdf')
         #plt.show()
         plt.close()  # Add this line to close the figure
 
