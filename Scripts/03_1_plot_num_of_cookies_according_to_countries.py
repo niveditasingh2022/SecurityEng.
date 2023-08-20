@@ -63,26 +63,27 @@ for rule_strictness, color, dark_color in zip(['Less Stricter', 'Stricter Rule']
     #ax.bar(filtered_data['Country'], filtered_data['Total Cookies'], color=color, edgecolor=color, label=f'{rule_strictness} - Total Cookies')
     #ax.bar(filtered_data['Country'], filtered_data['3rd Party Cookies'], color=color, edgecolor= 'black', hatch='/////', linewidth=1, label=f'{rule_strictness} - Third Party Cookies')
     bars1 = ax.bar(filtered_data['Country'], filtered_data['Total Cookies'], color=color, edgecolor=color, label=f'{rule_strictness} - Total Cookies')
-    bars2 = ax.bar(filtered_data['Country'], filtered_data['3rd Party Cookies'], color=color, edgecolor='black', hatch='/////', linewidth=1, label=f'{rule_strictness} - Third Party Cookies')
+    bars2 = ax.bar(filtered_data['Country'], filtered_data['3rd Party Cookies'], color=color, edgecolor='black', hatch='//', linewidth=1, label=f'{rule_strictness} - Third Party Cookies')
     # Annotating the percentage of 3rd party cookies
     for bar1, bar2 in zip(bars1, bars2):
         height1 = bar1.get_height()
         height2 = bar2.get_height()
         percentage_3rd_party = (height2 / height1) * 100
         percentage_remaining = 100 - percentage_3rd_party
-        #ax.annotate(f'{percentage_3rd_party:.2f}%', xy=(bar2.get_x() + bar2.get_width() / 2, height2 / 2), ha='center', va='center', fontsize=9, color='black')
-        #ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, (height1 + height2) / 2), ha='center', va='center', fontsize=9, color='white')
-        #ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, height1 - 20), ha='center', va='center', fontsize=9, color='black')
+        #ax.annotate(f'{percentage_3rd_party:.2f}%', xy=(bar2.get_x() + bar2.get_width() / 2, height2 / 2), ha='center', va='center', fontsize=16, color='black')
+        #ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, (height1 + height2) / 2), ha='center', va='center', fontsize=16, color='white')
+        #ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, height1 - 20), ha='center', va='center', fontsize=16, color='black')
         percentage = (height2 / height1) * 100
-        ax.annotate(f'{percentage:.2f}%', xy=(bar2.get_x() + bar2.get_width() / 2, height2), xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=9, color='black')
+        ax.annotate(f'{percentage:.2f}%', xy=(bar2.get_x() + bar2.get_width() / 2, height2), xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=10, color='black')
 
 
 # Formatting the plot
-plt.title('Proportion of third party cookies in total number of cookies', fontsize=16, fontweight='bold', y=1.1)
-plt.xlabel('Countries in our dataset', fontsize=14)
-plt.ylabel('Number of cookies', fontsize=14)
-plt.xticks(rotation=45, ha='right')
-plt.legend(loc='upper right', prop={'size': 9})
+plt.title('Proportion of third party cookies in total number of cookies', fontsize=16, fontweight='bold', y=1.02)
+plt.xlabel('Countries in our dataset', fontsize=16)
+plt.ylabel('Number of cookies', fontsize=16)
+plt.xticks(rotation=45, ha='right', fontsize=16)
+plt.yticks(fontsize=16)
+plt.legend(loc='upper right', prop={'size': 12})
 #plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add a grid
 
 # Display the plot
@@ -91,5 +92,5 @@ plt.gca().set_axisbelow(True)
 plt.tight_layout()
 
 #plt.savefig('num_of_cookies_according_to_countries.png')
-plt.savefig('num_of_cookies_according_to_countries.pdf', format='pdf')
+plt.savefig('num_of_cookies_according_to_countries.pdf', format='pdf', dpi=600)
 plt.show()

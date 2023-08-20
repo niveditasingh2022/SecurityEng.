@@ -40,10 +40,10 @@ def draw_bar_graph(csvfile):
 
     ax1.barh(y=data['Domain (Country)'], width=data['Lifetime_exclude_session_cookie'], color=colors)
     #ax1.barh(y=data['Country'], width=data['Lifetime_exclude_session_cookie'], color=colors)
-    ax1.set_xlabel('Life cycle (hours)')
-    ax1.set_ylabel('Top-Level Domain (Country)')
+    ax1.set_xlabel('Life cycle (hours)', fontsize=16)
+    ax1.set_ylabel('Top-Level Domain (Country)', fontsize=16)
     #ax1.set_ylabel('Country')
-    ax1.set_title('Average life cycle of cookies on top shopping websites\n in each country without session cookies', fontsize=16, fontweight='bold', y=1.07)
+    ax1.set_title('Average life cycle of cookies on top shopping websites\n in each country without session cookies', fontsize=16, fontweight='bold', y=1.08)
 
     # Add a tick every 720 hours on the x-axis
     max_hour = np.max(data['Lifetime_exclude_session_cookie'])
@@ -54,16 +54,21 @@ def draw_bar_graph(csvfile):
     ax2.set_xlim(ax1.get_xlim())
     ax2.set_xticks(x_ticks)
     ax2.set_xticklabels([f'{int(x/720)}' for x in x_ticks])
-    ax2.set_xlabel('Life cycle (months)')
+    ax2.set_xlabel('Life cycle (months)', fontsize=16)
 
     # grid line 표현
     ax1.grid(axis='x')
-
+    
     ax1.invert_yaxis()
+
+    ax1.tick_params(axis='x', labelsize=16)
+    ax2.tick_params(axis='x', labelsize=16)
+    ax1.tick_params(axis='y', labelsize=16)
+
     plt.subplots_adjust(left=0.15, right=0.85)  # Adjust the padding for x-axis labels
     plt.gca().set_axisbelow(True)
     plt.tight_layout()
-    plt.savefig('avg_lifetime_for_top_shopping_web_in_each_country.pdf', format='pdf')
+    plt.savefig('avg_lifetime_for_top_shopping_web_in_each_country.pdf', format='pdf', dpi=600)
     plt.show()
 
 if __name__ == "__main__":

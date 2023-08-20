@@ -54,7 +54,7 @@ for i, row in data.iterrows():
                                     colors=colors,
                                     startangle=90,
                                     autopct=lambda pct: f"{abs(pct):.1f}%\n({int(abs(pct/100*total_cookies))})",
-                                    textprops={'color': 'black', 'fontsize': 12},
+                                    textprops={'color': 'black', 'fontsize': 14},
                                     pctdistance=0.85)
 
     # Adjust position
@@ -70,21 +70,21 @@ for i, row in data.iterrows():
     if file == "All Countries":
         #title = '"SameSite" cookie attribute proportion (France, Germany, Italy, the Netherlands, Poland, Spain, Sweden, the USA, Australia, Brazil, Canada, Chile, India, Japan, New Zealand, Republic of Korea, and Switzerland)'
         title = '"SameSite" cookie attribute proportion (France, Germany, Italy, Netherlands, Poland, Spain, Sweden, USA, Australia, Brazil, Canada, Chile, India, Japan, New Zealand, Republic of Korea, and Switzerland)'
-        ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold')
+        ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold', fontsize=16)
     elif file == "All Countries_Less Stricter":
         #title = '"SameSite" cookie attribute proportion (Australia, Brazil, Canada, Chile, India, Japan, New Zealand, Republic of Korea, and Switzerland)'
         title = '"SameSite" cookie attribute proportion (Australia, Brazil, Canada, Chile, India, Japan, New Zealand, Republic of Korea, and Switzerland)'
-        ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold')
+        ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold', fontsize=16)
     elif file == "All Countries_Stricter Rule":
         #title = '"SameSite" cookie attribute proportion (France, Germany, Italy, the Netherlands, Poland, Spain, Sweden, and the USA)'
         title = '"SameSite" cookie attribute proportion (France, Germany, Italy, Netherlands, Poland, Spain, Sweden, and USA)'
-        ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold')
+        ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold', fontsize=16)
     else:
         country = file.split("_")[-1]
-        ax.set_title(f'"SameSite" cookie attribute proportion ({country})', fontweight='bold')
+        ax.set_title(f'"SameSite" cookie attribute proportion ({country})', fontweight='bold', fontsize=16)
 
     # Save the graph
     plt.tight_layout()
     output_file = f"{file}_samesite_attribute_pie_chart.pdf"
-    plt.savefig(output_file, format='pdf')
+    plt.savefig(output_file, format='pdf', dpi=600)
     plt.close()

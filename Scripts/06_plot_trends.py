@@ -48,8 +48,8 @@ def plot_graphs(directory):
         x = np.arange(len(x_ticks))
         plt.figure(i, figsize=(8, 6))
         plt.stackplot(x, values, labels=labels, colors=colors)
-        plt.xlabel("Values", fontsize = 14)
-        plt.ylabel("Count", fontsize = 14)
+        plt.xlabel("Values", fontsize=16)
+        plt.ylabel("Count", fontsize=16)
         if country_name == "All Countries":
             plt.title('Cookie attributes and their trends \nin all countries', fontsize=16, fontweight='bold')
         #    plt.ylim(0, max_y_value)
@@ -60,16 +60,16 @@ def plot_graphs(directory):
             plt.title('Cookie attributes and their trends \nin stricter countries', fontsize=16, fontweight='bold')
         #    plt.ylim(0, max_y_value)
         else:
-            plt.title(f"Cookie attributes and their trends \nin {country_name}", fontsize = 16, fontweight = 'bold')
+            plt.title(f"Cookie attributes and their trends \nin {country_name}", fontsize=16, fontweight = 'bold')
             #plt.ylim(0, max_y_value)
-        plt.xticks(x, x_ticks, fontsize=12)
-        plt.yticks(fontsize=12)
-        plt.legend()
+        plt.xticks(x, x_ticks, fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.legend(fontsize=14)
 
         plt.grid(axis='y')
         plt.gca().set_axisbelow(True)
         plt.tight_layout()
-        plt.savefig(f'{new_file_name}_attr_trends.pdf', format='pdf')
+        plt.savefig(f'{new_file_name}_attr_trends.pdf', format='pdf', dpi=600)
         #plt.show()
         plt.close()  # Add this line to close the figure
 
