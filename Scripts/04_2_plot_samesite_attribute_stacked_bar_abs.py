@@ -94,6 +94,6 @@ data['File'] = data['File'].replace('Less Stricter', 'Less Stricter Countries')
 data['File'] = data['File'].replace('Stricter Rule', 'Stricter Rule Countries')
 specified_files_data = data[data['File'].isin(["All Countries", "Less Stricter Countries", "Stricter Rule Countries"])]
 other_files_data = data[~data['File'].isin(["All Countries", "Less Stricter Countries", "Stricter Rule Countries"])]
-#plot_horizontal_stacked_bar_graph_absolute_values(specified_files_data, "The Proportion of 'SameSite' Cookie Attributes by Rules Strictness")
-plot_horizontal_grouped_bar_graph_absolute_values(specified_files_data, "The Proportion of 'SameSite' Cookie Attributes by Rules Strictness")
-plot_horizontal_stacked_bar_graph_absolute_values(other_files_data, "The Proportion of 'SameSite' Cookie Attributes Across Different Countries")
+#plot_horizontal_stacked_bar_graph_absolute_values(specified_files_data, "The Proportion of 'sameSite' Cookie Attributes by Rules Strictness")
+plot_horizontal_grouped_bar_graph_absolute_values(specified_files_data, "The Proportion of 'sameSite' Cookie Attributes by Rules Strictness")
+plot_horizontal_stacked_bar_graph_absolute_values(other_files_data, "The Proportion of 'sameSite' Cookie Attributes Across Different Countries")

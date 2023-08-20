@@ -43,9 +43,15 @@ for csv_file in csv_files:
     # Save domain_counts and labels to CSV file
     domain_counts_df.to_csv(csv_file.split('.')[0] + '_domain_counts.csv', index=False)
 
-    # Define a refined color palette
-    #refined_color_palette = ['#4b81bf', '#F07BA5']
-    refined_color_palette = ['#4b81bf']
+    # Define a refined color palette based on filename_without_suffix and leaf_file_name
+    if 'Stricter Rule' in file_name_without_suffix:
+        refined_color_palette = ['#4b81bf']
+    elif 'Less Stricter' in file_name_without_suffix:
+        refined_color_palette = ['#7aa5b3']
+    elif leaf_file_name == 'All Countries':
+        refined_color_palette = ['#18418c']
+    else:
+        refined_color_palette = ['#4b81bf']  # Default color
 
     # Plotting
     plt.figure(figsize=(12, 8))

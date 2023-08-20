@@ -42,11 +42,12 @@ data['Country'] = data['File'].apply(lambda x: x.split('All Countries_', 1)[-1].
 # Get the unique contries
 unique_countries = data['Country'].unique()
 
-# Choose more academically appropriate colors from the provided palette
-colors_academic = ['#4b81bf', '#39A845']  # Blue and Green
 # Create darker versions of the original colors
-dark_blue = darken_color('#4b81bf', 0.4)
+dark_blue = darken_color('#4b81bf', 0.1)
 dark_green = darken_color('#39A845', 0.4)
+
+# Choose more academically appropriate colors from the provided palette
+colors_academic = ['#7aa5b3', '#4b81bf']  # lightblue+0.2 and Blue
 
 # Get the indices for the two groups of countries
 indices_less_stricter = [i for i, country in enumerate(unique_countries) if 'Less Stricter' in data[data['Country'] == country]['Rule_Strictness'].values]
@@ -74,7 +75,7 @@ for rule_strictness, color, dark_color in zip(['Less Stricter', 'Stricter Rule']
         #ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, (height1 + height2) / 2), ha='center', va='center', fontsize=16, color='white')
         #ax.annotate(f'{percentage_remaining:.2f}%', xy=(bar1.get_x() + bar1.get_width() / 2, height1 - 20), ha='center', va='center', fontsize=16, color='black')
         percentage = (height2 / height1) * 100
-        ax.annotate(f'{percentage:.2f}%', xy=(bar2.get_x() + bar2.get_width() / 2, height2), xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=10, color='black')
+        ax.annotate(f'{percentage:.2f}%', xy=(bar2.get_x() + bar2.get_width() / 2, height2), xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=12, color='black')
 
 
 # Formatting the plot
