@@ -27,7 +27,7 @@ def plot_graphs(directory):
         #total_sum = sum(counts[key].get(True, 0) + counts[key].get(False, 0) for key in ['httpOnly', 'secure', 'session'])
         total_sum = sum(counts[key].get(False, 0) for key in ['httpOnly', 'secure', 'session'])
         country_name  = os.path.basename(csv_file).split('_3rd_party.csv')[0].split('_')[-1]
-        if country_name in ["All Countries", "Stricter Rule", "Less Stricter"]:
+        if country_name in ["All Countries", "GDPR&CCPA Countries", "GDPR-like Countries"]:
             group1_max_y_value = max(group1_max_y_value, total_sum)
         else:
             group2_max_y_value = max(group2_max_y_value, total_sum)
@@ -37,7 +37,7 @@ def plot_graphs(directory):
         counts = count_values(csv_file)
         country_name = os.path.basename(csv_file).split('_3rd_party.csv')[0].split('_')[-1]
         new_file_name = os.path.basename(csv_file).split('_3rd_party.csv')[0]
-        #max_y_value = (group1_max_y_value+3000) if country_name in ["All Countries", "Stricter Rule", "Less Stricter"] else (group2_max_y_value+500)
+        #max_y_value = (group1_max_y_value+3000) if country_name in ["All Countries", "GDPR&CCPA Countries", "GDPR-like Countries"] else (group2_max_y_value+500)
         values = []
         labels = []
         colors = ['#FFC0CB', '#66CDAA', '#4682B4']
@@ -53,11 +53,11 @@ def plot_graphs(directory):
         if country_name == "All Countries":
             plt.title('Cookie attributes and their trends \nin all countries', fontsize=16, fontweight='bold')
         #    plt.ylim(0, max_y_value)
-        elif country_name == "Less Stricter":
-            plt.title('Cookie attributes and their trends \nin less stricter countries', fontsize=16, fontweight='bold')
+        elif country_name == "GDPR-like Countries":
+            plt.title('Cookie attributes and their trends \nin GDPR-like countries', fontsize=16, fontweight='bold')
         #    plt.ylim(0, max_y_value)
-        elif country_name == "Stricter Rule":
-            plt.title('Cookie attributes and their trends \nin stricter countries', fontsize=16, fontweight='bold')
+        elif country_name == "GDPR&CCPA Countries":
+            plt.title('Cookie attributes and their trends \nin GDPR&CCPA countries', fontsize=16, fontweight='bold')
         #    plt.ylim(0, max_y_value)
         else:
             plt.title(f"Cookie attributes and their trends \nin {country_name}", fontsize=16, fontweight = 'bold')

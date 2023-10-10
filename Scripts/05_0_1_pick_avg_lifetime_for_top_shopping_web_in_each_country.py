@@ -9,8 +9,8 @@ def create_max_lifetime_csv(directory):
 
     # Filenames to skip
     skip_files = ['avg_lifetime_by_web_for_All Countries.csv', 
-                  'avg_lifetime_by_web_for_All Countries_Less Stricter.csv', 
-                  'avg_lifetime_by_web_for_All Countries_Stricter Rule.csv']
+                  'avg_lifetime_by_web_for_All Countries_GDPR-like Countries.csv', 
+                  'avg_lifetime_by_web_for_All Countries_GDPR&CCPA Countries.csv']
 
     # Initialize a list to store DataFrames
     df_list = []

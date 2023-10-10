@@ -90,10 +90,10 @@ data = read_csv_file(csv_file)
 
 # Plotting the graphs using absolute values for specified and other files
 data['File'] = data['File'].apply(lambda x: x.split('_')[-1])
-data['File'] = data['File'].replace('Less Stricter', 'Less Stricter Countries')
-data['File'] = data['File'].replace('Stricter Rule', 'Stricter Rule Countries')
-specified_files_data = data[data['File'].isin(["All Countries", "Less Stricter Countries", "Stricter Rule Countries"])]
-other_files_data = data[~data['File'].isin(["All Countries", "Less Stricter Countries", "Stricter Rule Countries"])]
+data['File'] = data['File'].replace('GDPR-like Countries', 'GDPR-like Countries')
+data['File'] = data['File'].replace('GDPR&CCPA Countries', 'GDPR&CCPA Countries')
+specified_files_data = data[data['File'].isin(["All Countries", "GDPR-like Countries", "GDPR&CCPA Countries"])]
+other_files_data = data[~data['File'].isin(["All Countries", "GDPR-like Countries", "GDPR&CCPA Countries"])]
 #plot_horizontal_stacked_bar_graph_absolute_values(specified_files_data, "The Proportion of 'sameSite' Cookie Attributes by Rules Strictness")
 plot_horizontal_grouped_bar_graph_absolute_values(specified_files_data, "The Proportion of 'sameSite' Cookie Attributes by Rules Strictness")
 plot_horizontal_stacked_bar_graph_absolute_values(other_files_data, "The Proportion of 'sameSite' Cookie Attributes Across Different Countries")

@@ -41,12 +41,20 @@ for csv_file in csv_files:
     domain_counts_df = pd.DataFrame({'Cookie Domain': domain_counts.index, 'Count': domain_counts.values})
 
     # Save domain_counts and labels to CSV file
-    domain_counts_df.to_csv(csv_file.split('.')[0] + '_domain_counts.csv', index=False)
+    #print("Original csv_file:", csv_file)
+    #print("After splitting:", csv_file.split('.')[0])
+    #print("Generated filename:", csv_file.split('.')[0] + '_domain_counts.csv')
+    #print("Original csv_file:", csv_file)
+    #print("After splitting:", os.path.splitext(csv_file)[0])
+    #print("Generated filename:", os.path.splitext(csv_file)[0] + '_domain_counts.csv')
+    #domain_counts_df.to_csv(csv_file.split('.')[0] + '_domain_counts.csv', index=False)
+    domain_counts_df.to_csv(os.path.splitext(csv_file)[0] + '_domain_counts.csv', index=False)
+
 
     # Define a refined color palette based on filename_without_suffix and leaf_file_name
-    if 'Stricter Rule' in file_name_without_suffix:
+    if 'GDPR&CCPA Countries' in file_name_without_suffix:
         refined_color_palette = ['#4b81bf']
-    elif 'Less Stricter' in file_name_without_suffix:
+    elif 'GDPR-like Countries' in file_name_without_suffix:
         refined_color_palette = ['#7aa5b3']
     elif leaf_file_name == 'All Countries':
         refined_color_palette = ['#18418c']
@@ -60,11 +68,11 @@ for csv_file in csv_files:
     if leaf_file_name == "All Countries":
         plt.title(f'Top {len(top_domains)} third party cookies in all countries', fontsize=16, fontweight='bold')
         plt.ylim(0, 0.06) # Set y-axis limit to 6%
-    elif leaf_file_name == "Less Stricter":
-        plt.title(f'Top {len(top_domains)} third party cookies in less stricter countries', fontsize=16, fontweight='bold')
+    elif leaf_file_name == "GDPR-like Countries":
+        plt.title(f'Top {len(top_domains)} third party cookies in GDPR-like countries', fontsize=16, fontweight='bold')
         plt.ylim(0, 0.06) # Set y-axis limit to 6%
-    elif leaf_file_name == "Stricter Rule":
-        plt.title(f'Top {len(top_domains)} third party cookies in stricter countries', fontsize=16, fontweight='bold')
+    elif leaf_file_name == "GDPR&CCPA Countries":
+        plt.title(f'Top {len(top_domains)} third party cookies in GDPR&CCPA countries', fontsize=16, fontweight='bold')
         plt.ylim(0, 0.06) # Set y-axis limit to 6%
     else:
         plt.title(f'Top {len(top_domains)} third party cookies in ' + leaf_file_name, fontsize=16, fontweight='bold')

@@ -34,7 +34,7 @@ data = pd.read_csv('./num_of_3rd_party_cookies.csv')
 data.head()
 
 # Split the 'File' column into 'Rule_Strictness' and 'Country'
-rows_to_remove = ['All Countries', 'All Countries_Less Stricter', 'All Countries_Stricter Rule'] 
+rows_to_remove = ['All Countries', 'All Countries_GDPR-like Countries', 'All Countries_GDPR&CCPA Countries'] 
 data = data[~data['File'].isin(rows_to_remove)] # Remove the rows we don't want
 data['Rule_Strictness'] = data['File'].apply(lambda x: x.split('All Countries_', 1)[-1].split('_', 1)[0])
 data['Country'] = data['File'].apply(lambda x: x.split('All Countries_', 1)[-1].split('_', 1)[-1].split('_')[-1])
@@ -50,12 +50,12 @@ dark_green = darken_color('#39A845', 0.4)
 colors_academic = ['#7aa5b3', '#4b81bf']  # lightblue+0.2 and Blue
 
 # Get the indices for the two groups of countries
-indices_less_stricter = [i for i, country in enumerate(unique_countries) if 'Less Stricter' in data[data['Country'] == country]['Rule_Strictness'].values]
-indices_stricter_rule = [i for i, country in enumerate(unique_countries) if 'Stricter Rule' in data[data['Country'] == country]['Rule_Strictness'].values]
+indices_less_stricter = [i for i, country in enumerate(unique_countries) if 'GDPR-like Countries' in data[data['Country'] == country]['Rule_Strictness'].values]
+indices_stricter_rule = [i for i, country in enumerate(unique_countries) if 'GDPR&CCPA Countries' in data[data['Country'] == country]['Rule_Strictness'].values]
 
 # Plotting the data
 fig, ax = plt.subplots(figsize=(12, 8))
-for rule_strictness, color, dark_color in zip(['Less Stricter', 'Stricter Rule'], colors_academic, [dark_blue, dark_green]):
+for rule_strictness, color, dark_color in zip(['GDPR-like Countries', 'GDPR&CCPA Countries'], colors_academic, [dark_blue, dark_green]):
     
     # Filter the data based on the rule strictness
     filtered_data = data[data['Rule_Strictness'] == rule_strictness]

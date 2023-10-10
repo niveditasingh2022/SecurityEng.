@@ -71,11 +71,11 @@ for i, row in data.iterrows():
         #title = '"sameSite" cookie attribute proportion (France, Germany, Italy, the Netherlands, Poland, Spain, Sweden, the USA, Australia, Brazil, Canada, Chile, India, Japan, New Zealand, Republic of Korea, and Switzerland)'
         title = '"sameSite" cookie attribute proportion (France, Germany, Italy, Netherlands, Poland, Spain, Sweden, USA, Australia, Brazil, Canada, Chile, India, Japan, New Zealand, Republic of Korea, and Switzerland)'
         ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold', fontsize=16)
-    elif file == "All Countries_Less Stricter":
+    elif file == "All Countries_GDPR-like Countries":
         #title = '"sameSite" cookie attribute proportion (Australia, Brazil, Canada, Chile, India, Japan, New Zealand, Republic of Korea, and Switzerland)'
         title = '"sameSite" cookie attribute proportion (Australia, Brazil, Canada, Chile, India, Japan, New Zealand, Republic of Korea, and Switzerland)'
         ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold', fontsize=16)
-    elif file == "All Countries_Stricter Rule":
+    elif file == "All Countries_GDPR&CCPA Countries":
         #title = '"sameSite" cookie attribute proportion (France, Germany, Italy, the Netherlands, Poland, Spain, Sweden, and the USA)'
         title = '"sameSite" cookie attribute proportion (France, Germany, Italy, Netherlands, Poland, Spain, Sweden, and USA)'
         ax.set_title(textwrap.fill(title, title_max_width), fontweight='bold', fontsize=16)
