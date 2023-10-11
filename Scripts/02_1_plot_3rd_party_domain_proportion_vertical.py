@@ -72,7 +72,7 @@ for csv_file in csv_files:
         plt.title(f'Top {len(top_domains)} third party cookies in GDPR-like countries', fontsize=16, fontweight='bold')
         plt.ylim(0, 0.06) # Set y-axis limit to 6%
     elif leaf_file_name == "GDPR&CCPA Countries":
-        plt.title(f'Top {len(top_domains)} third party cookies in GDPR&CCPA countries', fontsize=16, fontweight='bold')
+        plt.title(f'Top {len(top_domains)} third party cookies in GDPR/CCPA countries', fontsize=16, fontweight='bold')
         plt.ylim(0, 0.06) # Set y-axis limit to 6%
     else:
         plt.title(f'Top {len(top_domains)} third party cookies in ' + leaf_file_name, fontsize=16, fontweight='bold')

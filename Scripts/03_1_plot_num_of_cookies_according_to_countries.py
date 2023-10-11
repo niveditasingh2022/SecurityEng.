@@ -57,14 +57,17 @@ indices_stricter_rule = [i for i, country in enumerate(unique_countries) if 'GDP
 fig, ax = plt.subplots(figsize=(12, 8))
 for rule_strictness, color, dark_color in zip(['GDPR-like Countries', 'GDPR&CCPA Countries'], colors_academic, [dark_blue, dark_green]):
     
+    # Determine label based on the rule strictness
+    label_strictness = "GDPR/CCPA Countries" if rule_strictness == "GDPR&CCPA Countries" else rule_strictness
+
     # Filter the data based on the rule strictness
     filtered_data = data[data['Rule_Strictness'] == rule_strictness]
     
     ## Create a bar plot for the filtered data
     #ax.bar(filtered_data['Country'], filtered_data['Total Cookies'], color=color, edgecolor=color, label=f'{rule_strictness} - Total Cookies')
     #ax.bar(filtered_data['Country'], filtered_data['3rd Party Cookies'], color=color, edgecolor= 'black', hatch='/////', linewidth=1, label=f'{rule_strictness} - Third Party Cookies')
-    bars1 = ax.bar(filtered_data['Country'], filtered_data['Total Cookies'], color=color, edgecolor=color, label=f'{rule_strictness} - Total Cookies')
-    bars2 = ax.bar(filtered_data['Country'], filtered_data['3rd Party Cookies'], color=color, edgecolor='black', hatch='//', linewidth=1, label=f'{rule_strictness} - Third Party Cookies')
+    bars1 = ax.bar(filtered_data['Country'], filtered_data['Total Cookies'], color=color, edgecolor=color, label=f'{label_strictness} - Total Cookies')
+    bars2 = ax.bar(filtered_data['Country'], filtered_data['3rd Party Cookies'], color=color, edgecolor='black', hatch='//', linewidth=1, label=f'{label_strictness} - Third Party Cookies')
     # Annotating the percentage of 3rd party cookies
     for bar1, bar2 in zip(bars1, bars2):
         height1 = bar1.get_height()
