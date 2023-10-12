@@ -25,7 +25,7 @@ def plot_horizontal_grouped_bar_graph_absolute_values(data, title):
     y_pos = range(len(y_labels))
     bar_width = 0.2
 
-    colors=['#39A845', '#C1DB3C', '#DF5141', '#D4CACD']
+    colors = ['#5ab4ac', '#91cdc7', '#d8b365', '#e5e5e5'] 
     plt.figure(figsize=(12,6))
 
     for idx, category in enumerate(categories):
@@ -65,10 +65,10 @@ def plot_horizontal_stacked_bar_graph_absolute_values(data, title):
     #plt.barh(y_pos, ratios_lax, left=ratios_strict, color='#C1DB3C', label='Lax', height=0.5)
     #plt.barh(y_pos, ratios_none, left=ratios_strict + ratios_lax, color='#DF5141', label='None', height=0.5)
     #plt.barh(y_pos, ratios_default, left=ratios_strict + ratios_lax + ratios_none, color='#D4CACD', label='Default', height=0.5)
-    plt.barh(y_pos, ratios_strict, color='#39A845', label='Strict')
-    plt.barh(y_pos, ratios_lax, left=ratios_strict, color='#C1DB3C', label='Lax')
-    plt.barh(y_pos, ratios_none, left=ratios_strict + ratios_lax, color='#DF5141', label='None')
-    plt.barh(y_pos, ratios_default, left=ratios_strict + ratios_lax + ratios_none, color='#D4CACD', label='Default')
+    plt.barh(y_pos, ratios_strict, color='#5ab4ac', label='Strict')
+    plt.barh(y_pos, ratios_lax, left=ratios_strict, color='#91cdc7', label='Lax')
+    plt.barh(y_pos, ratios_none, left=ratios_strict + ratios_lax, color='#d8b365', label='None')
+    plt.barh(y_pos, ratios_default, left=ratios_strict + ratios_lax + ratios_none, color='#e5e5e5', label='Default')
     plt.yticks(y_pos, y_labels, fontsize=16)
     plt.xticks(fontsize=16)
     plt.xlabel('Proportion of Cookies', fontsize=16)

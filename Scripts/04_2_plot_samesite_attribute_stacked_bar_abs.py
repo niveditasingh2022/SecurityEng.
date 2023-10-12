@@ -25,7 +25,8 @@ def plot_horizontal_grouped_bar_graph_absolute_values(data, title):
     y_pos = range(len(y_labels))
     bar_width = 0.2
 
-    colors=['#39A845', '#C1DB3C', '#DF5141', '#D4CACD']
+    #colors=['#39A845', '#C1DB3C', '#DF5141', '#D4CACD']
+    colors = ['#5ab4ac', '#91cdc7', '#d8b365', '#e5e5e5'] 
     plt.figure(figsize=(12,6))
 
     for idx, category in enumerate(categories):
@@ -56,10 +57,10 @@ def plot_horizontal_stacked_bar_graph_absolute_values(data, title):
     y_labels = data['File']
     y_pos = range(len(y_labels))
     plt.figure(figsize=(12,8))
-    plt.barh(y_pos, values_strict, color='#39A845', label='Strict')
-    plt.barh(y_pos, values_lax, left=values_strict, color='#C1DB3C', label='Lax')
-    plt.barh(y_pos, values_none, left=values_strict + values_lax, color='#DF5141', label='None')
-    plt.barh(y_pos, values_default, left=values_strict + values_lax + values_none, color='#D4CACD', label='Default')
+    plt.barh(y_pos, values_strict, color='#5ab4ac', label='Strict')
+    plt.barh(y_pos, values_lax, left=values_strict, color='#91cdc7', label='Lax')
+    plt.barh(y_pos, values_none, left=values_strict + values_lax, color='#d8b365', label='None')
+    plt.barh(y_pos, values_default, left=values_strict + values_lax + values_none, color='#e5e5e5', label='Default')
     plt.yticks(y_pos, y_labels, fontsize=16)
     plt.xticks(fontsize=16)
     plt.xlabel('Number of Cookies', fontsize=16)

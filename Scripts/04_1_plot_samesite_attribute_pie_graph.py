@@ -43,7 +43,9 @@ for i, row in data.iterrows():
     missing = row['Not set']
 
     # Set colors
-    colors = ['#39A845', '#C1DB3C', '#DF5141', '#D4CACD'] 
+    #colors = ['#39A845', '#C1DB3C', '#DF5141', '#D4CACD'] 
+    colors = ['#5ab4ac', '#91cdc7', '#d8b365', '#e5e5e5'] 
+    #colors = ['#5ab4ac', '#91cdc7', '#d8b365', '#e5cc98'] 
 
     # Plot the graph
     fig, ax = plt.subplots(figsize=(8, 8))

@@ -39,7 +39,7 @@ for csv_file in csv_files:
     elif file_name == 'All Countries':
         refined_color_palette = ['#18418c']
     else:
-        refined_color_palette = ['#4b81bf']  # Default color
+        refined_color_palette = ['#18418c']
 
     # Plotting
     plt.figure(figsize=(12, 8))
@@ -73,4 +73,5 @@ for csv_file in csv_files:
     plt.tight_layout()
     # Save the figure
     plt.savefig(file_name + '.pdf', format='pdf', dpi=600)
+    plt.show()
     plt.close()

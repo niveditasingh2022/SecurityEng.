@@ -33,7 +33,7 @@ def plot_grouped_bar_chart_ratios_updated(directory):
     gdpr_ccpa_false = [gdpr_ccpa_ratios[key].get(False, 0) for key in labels]
     gdpr_ccpa_true = [gdpr_ccpa_ratios[key].get(True, 0) for key in labels]
     
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(12, 8))
     colors_academic = ['#7aa5b3', '#4b81bf']
     
     ax.bar(x - width/2 - 0.05, gdpr_like_false, width, color=colors_academic[0], edgecolor='black', hatch='//', linewidth=1, label='GDPR-like (False)')
@@ -41,12 +41,15 @@ def plot_grouped_bar_chart_ratios_updated(directory):
     ax.bar(x + width/2 + 0.05, gdpr_ccpa_false, width, color=colors_academic[1], edgecolor='black', hatch='//', linewidth=1, label='GDPR&CCPA (False)')
     ax.bar(x + width/2 + 0.05, gdpr_ccpa_true, width, color=colors_academic[1], bottom=gdpr_ccpa_false, label='GDPR&CCPA (True)')
     
-    ax.set_xlabel('Attributes')
-    ax.set_ylabel('Ratio')
-    ax.set_title('Third party cookie attributes in GDPR-like vs GDPR/CCPA countries')
+    ax.set_xlabel('Cookie attributes', fontsize=16)
+    ax.set_ylabel('Ratio', fontsize=16)
+    ax.set_title('Third-party cookie attributes in GDPR-like vs GDPR/CCPA countries', fontsize=16, fontweight='bold')
     ax.set_xticks(x)
     ax.set_xticklabels(labels)
-    ax.legend(loc='upper left', bbox_to_anchor=(1,1))
+    ax.legend(loc='upper left', bbox_to_anchor=(1,1), fontsize=12)
+    #ax.legend(loc='upper right', fontsize=12)
+    ax.tick_params(axis='x', labelsize=16)
+    ax.tick_params(axis='y', labelsize=16)
     #ax.yaxis.grid(True)
     plt.grid(axis='y')
     plt.gca().set_axisbelow(True)
