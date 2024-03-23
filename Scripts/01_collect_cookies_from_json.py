@@ -28,14 +28,17 @@ for root, dirs, files in os.walk(args.directory):
                 with open(os.path.join(root, file)) as json_file:
                     data = json.load(json_file)
 
-                try:
-                    cookies_data = data['first']['cookies']['cookies']
-                    log_data = data['log']
-                except KeyError as e:
-                    logging.info(f"No 'first -> cookies -> cookies' or 'log' found in {file}. Error: {str(e)}")
-                    continue
+                cookies_data_combined = []
+                for key in ['first', 'click', 'second']:
+                    try:
+                        cookies_data = data[key]['cookies']['cookies']
+                        cookies_data_combined.extend(cookies_data)
+                        log_data = data['log']
+                    except KeyError as e:
+                        logging.info(f"No '{key} -> cookies -> cookies' or 'log' found in {file}. Error: {str(e)}")
+                        continue
 
-                if not cookies_data:
+                if not cookies_data_combined:
                     logging.info(f"Empty cookies data in {file}. Skipping this file.")
                     continue
 
@@ -54,7 +57,7 @@ for root, dirs, files in os.walk(args.directory):
                     #logging.info(f"File name {clean_filename} doesn't match with the visited website {visited_website}. Skipping this file.")
                     #continue
                 
-                for cookie in cookies_data:
+                for cookie in cookies_data_combined:
                     page_data = defaultdict(str)
                     page_data["Page"] = clean_filename
 
